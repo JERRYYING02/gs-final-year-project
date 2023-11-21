@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { SidebarPageRoutes } from './sidebarPageRoute';
 export const Sidebar = () => {
   return (
