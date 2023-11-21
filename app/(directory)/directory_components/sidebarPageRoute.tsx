@@ -30,12 +30,12 @@ const teacherRoutes = [
   {
     icon: PenSquare ,
     label: "Courses",
-    link: "/teacher/courses",
+    link: "/teacher/course",
   },
   {
     icon: BarChart3,
-    label: "Analytics",
-    link: "/teacher/analytics",
+    label: "Course Statistics",
+    link: "/teacher/courseStatistics",
   },
 ]
 
