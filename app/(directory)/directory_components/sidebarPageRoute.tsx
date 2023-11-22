@@ -34,7 +34,7 @@ const teacherRoutes = [
   },
   {
     icon: BarChart3,
-    label: "Statistics",
+    label: "Course Statistics",
     link: "/teacher/courseStatistics",
   },
 ]

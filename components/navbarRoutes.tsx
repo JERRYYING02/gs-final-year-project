@@ -1,4 +1,3 @@
-
 "use client";
 import { UserButton } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -8,9 +7,9 @@ import { Button } from "@/components/ui/button";
 
 const ExitButton = () => (
   <Link href="/">
-    <Button variant="ghost">
+    <Button size="sm" variant="ghost">
       <LogOut className="h-4 w-4 mr-2" />
-      View as Student
+      Exit
     </Button>
   </Link>
 );
@@ -18,7 +17,7 @@ const ExitButton = () => (
 const TeacherModeButton = () => (
   <Link href="/teacher/course">
     <Button variant="ghost">
-      Educator's Space
+      Teacher mode
     </Button>
   </Link>
 );
@@ -30,7 +29,7 @@ export const NavbarRoutes = () => {
   const isCoursePage = pathname?.includes("/course");
 
   return (
-    <div className="flex gap-x-5 ml-auto">
+    <div className="flex gap-x-2 ml-auto">
       {isTeacherPage || isCoursePage ? <ExitButton /> : <TeacherModeButton />}
       <UserButton afterSignOutUrl="/" />
     </div>
