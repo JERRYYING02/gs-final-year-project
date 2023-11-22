@@ -17,7 +17,7 @@ import {
   FormItem,
 } from "@/components/ui/form";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import {zodResolver} from '@hookform/resolvers/zod'
 
 //validation schema
 const formSchema = z.object({
@@ -43,7 +43,7 @@ const CreateCourse = () => {
     try {
       const response = await axios.post("/api/course", values);
       router.push(`/teacher/course/${response.data.id}`);
-      toast.success("Course created");
+      toast.success("Course successfully created");
     } catch {
       toast.error("Invalid response");
     }
@@ -104,3 +104,5 @@ const CreateCourse = () => {
 }
  
 export default CreateCourse;
+
+
