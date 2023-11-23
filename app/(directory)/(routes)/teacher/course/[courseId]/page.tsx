@@ -7,6 +7,9 @@ import { IconHelper } from "@/components/iconHelpers";
 import { TitleForm } from "./individualComponents/titleForm";
 
 import { DescriptionForm } from "./individualComponents/descriptionForm";
+
+import { ImageForm } from "./individualComponents/imageForm";
+import { CategoryForm } from "./individualComponents/categoryForm";
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   const { userId } = auth();
@@ -19,6 +22,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           id: params.courseId,
       },
   });
+  const categories = await db.category.findMany({
+    orderBy: {
+        name: "asc",
+    },
+});
 
     if (!course) {
         return redirect("/");
@@ -58,7 +66,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                         initialData={course}
                         courseId={course.id}
                     />
-                    
+                    <ImageForm initialData={course} courseId={course.id} />
+                    <CategoryForm
+                        initialData={course}
+                        courseId={course.id}
+                        options={categories.map((category) => ({
+                            label: category.name,
+                            value: category.id,
+                        }))}
+                    />
                 
                 </div>
             </div>
