@@ -42,7 +42,7 @@ model Attachment {
   url String @db.Text
 
   courseId String
-  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDeleteAttachment: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -2,7 +2,7 @@
 
 import * as z from "zod";
 import axios from "axios";
-import { Pencil, PlusCircle, ImageIcon } from "lucide-react";
+import { Pencil, PlusCircle, ImageIcon, Paintbrush } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
@@ -28,14 +28,14 @@ export const ImageForm = ({
   courseId
 }: ImageFormProps) => {
   const [isEditing, setIsEditing] = useState(false);
-
   const toggleEdit = () => setIsEditing((current) => !current);
 
   const router = useRouter();
 
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/app/api/course/${courseId}`, values);
+      await axios.patch(`/api/course/${courseId}`, values);
       toast.success("Course updated");
       toggleEdit();
       router.refresh();
@@ -45,19 +45,20 @@ export const ImageForm = ({
   }
 
   return (
-    <div className="mt-6 border bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
-        Course image
+    <div className="mt-10 border bg-gray-100 rounded-md p-3">
+      Course image
+      <div className="font-medium flex items-center justify-end">
         <Button onClick={toggleEdit} variant="ghost">
           {isEditing && (
             <>Cancel</>
           )}
           {!isEditing && !initialData.imageUrl && (
             <>
-              <PlusCircle className="h-4 w-4 mr-2" />
-              Add an image
+              <PlusCircle className="h-2 w-4 mr-2" />
+              Add image
             </>
           )}
+         
           {!isEditing && initialData.imageUrl && (
             <>
               <Pencil className="h-4 w-4 mr-2" />
@@ -66,10 +67,11 @@ export const ImageForm = ({
           )}
         </Button>
       </div>
+
       {!isEditing && (
         !initialData.imageUrl ? (
-          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
-            <ImageIcon className="h-10 w-10 text-slate-500" />
+          <div className="flex items-center justify-center h-50 bg-slate-200 rounded-md">
+            <ImageIcon className="h-5 w-5 text-gray-500" />
           </div>
         ) : (
           <div className="relative aspect-video mt-2">
@@ -82,13 +84,15 @@ export const ImageForm = ({
           </div>
         )
       )}
+
       {isEditing && (
         <div>
           <FileUpload
             endpoint="courseImage"
             onChange={(url) => {
               if (url) {
-                onSubmit({ imageUrl: url });
+                
+                onSubmit({ imageUrl: url});
               }
             }}
           />
