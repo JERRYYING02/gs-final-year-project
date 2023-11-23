@@ -4,7 +4,9 @@ import { redirect } from "next/navigation";
 
 import { Layers  } from "lucide-react";
 import { IconHelper } from "@/components/iconHelpers";
+import { TitleForm } from "./individualComponents/titleForm";
 
+import { DescriptionForm } from "./individualComponents/descriptionForm";
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   const { userId } = auth();
@@ -49,8 +51,15 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                 <div>
                     <div className="flex items-center gap-x-3">
                         <IconHelper icon={Layers} />
-                        <h2 className="text-xl font-semibold">Edit your course</h2>
+                        <h2 className="text-md font-semibold">Edit your course</h2>
                     </div>
+                    <TitleForm initialData={course} courseId={course.id} />
+                    <DescriptionForm
+                        initialData={course}
+                        courseId={course.id}
+                    />
+                    
+                
                 </div>
             </div>
         </div>
