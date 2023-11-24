@@ -65,35 +65,33 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
             toast.error("Something went wrong");
         }
     };
-
-    const onArrangement = async (
-        updateData: { id: string; position: number }[]
-    ) => {
+    const onArrangement = async (updateData: { id: string; position: number }[]) => {
         try {
-            setIsUpdating(true);
-            await axios.put(`/api/course/${courseId}/chapters/rearrange`, {
-                list: updateData,
-            });
-            toast.success("Chapters rearranged");
-            router.refresh();
-        } catch (error) {
-            toast.error("Something went wrong");
+          setIsUpdating(true);
+    
+          await axios.put(`/api/course/${courseId}/chapters/rearrange`, {
+            list: updateData
+          });
+          toast.success("Chapters reordered");
+          router.refresh();
+        } catch {
+          toast.error("Something went wrong");
         } finally {
-            setIsUpdating(false);
+          setIsUpdating(false);
         }
-    };
-
-    const onEditing = async (id: string) => {
+      }
+    
+      const onEditing = (id: string) => {
         router.push(`/teacher/course/${courseId}/chapters/${id}`);
-    };
+      }
 
     return (
-        <div className="mt-6 border bg-slate-100 rounded-md p-4">
-            {isUpdating && (
-                <div className="absolute h-full w-full bg-slate-500/20 top-0 right-0 rounded-md flex items-center justify-center">
-                    <Loader2 className="animate-spin h-6 w-6 text-sky-700" />
-                </div>
-            )}
+        <div className="relative mt-6 border bg-gray-100 rounded-md p-4">
+      {isUpdating && (
+        <div className="absolute h-full w-full bg-slate-500/20 top-0 right-0 rounded-m flex items-center justify-center">
+          <Loader2 className="animate-spin h-6 w-6 text-sky-700" />
+        </div>
+      )}
             <div className="font-medium flex items-center justify-between">
                 Course chapters
                 <Button onClick={toggleCreating} variant="ghost">
