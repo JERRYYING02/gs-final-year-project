@@ -70,7 +70,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
   );
 
   return (
-    <div className="mt-6 bg-slate-100 rounded-md p-4">
+    <div className="mt-6 border bg-gray-100 p-4">
       <div className="font-medium flex items-center justify-between">
         Course category
         <Button onClick={toggleEdit} variant="ghost">
@@ -79,7 +79,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({
           ) : (
             <>
               <PenIcon className="h-4 w-4 mr-2" />
-              Edit category
+              Edit
             </>
           )}
         </Button>

@@ -63,7 +63,7 @@ export const AttachmentForm = ({
     };
 
     return (
-        <div className="mt-5 border rounded-md bg-gray-100 p-4">
+        <div className="mt-5 border bg-gray-100 p-4">
             <div className="font-medium flex items-center justify-between">
                 Course attachments
                 <Button onClick={toggleEdit} variant="ghost">
@@ -88,7 +88,7 @@ export const AttachmentForm = ({
                             {initialData.attachments.map((attachment) => (
                                 <div
                                     key={attachment.id}
-                                    className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700 rounded-md"
+                                    className="flex items-center p-3 w-full bg-sky-100 border-sky-200 border text-sky-700"
                                 >
                                     <File className="h-4 w-4 mr-2 flex-shrink-0" />
                                     <p className="text-xs line-clamp-1">

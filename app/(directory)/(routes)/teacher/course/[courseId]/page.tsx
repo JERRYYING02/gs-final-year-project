@@ -10,7 +10,7 @@ import { DescriptionForm } from "./individualComponents/descriptionForm";
 
 import { ImageForm } from "./individualComponents/imageForm";
 import CategoryForm from "./individualComponents/categoryForm";
-
+import { ChaptersForm } from "./individualComponents/chapterForm";
 import {
     CircleDollarSign,
     File,
@@ -30,12 +30,20 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const course = await db.course.findUnique({
       where: {
           id: params.courseId,
+          userId,
       },
       include: {
-        attachments: {
+          chapters: {
+                orderBy: {
+                    position: "asc",
+                },
+            },
+         attachments: {
             orderBy: {
                 createdAt: "desc",
             },
+
+            
         },
     },
   });
@@ -62,8 +70,8 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
     const submissionIndicator = `(${submittedFields} out of ${everyFields})`;
     return (
-        <div className="p-5">
-          <div className="flex items-center justify-between">
+        <div className="p-20">
+          <div className="flex items-center">
             <div className="flex flex-col">
               <h1 className="text-xl">Manage course</h1>
               <h3 className="text-gray-500">
@@ -72,7 +80,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             </div>
           </div>
     
-          <div className="grid grid-cols-1 gap-3 mt-10 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-3 mt-10 md:grid-cols-1">
             <div>
               {/* Course Editing Section */}
               <div className="flex items-center gap-x-3">
@@ -108,6 +116,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                     <h2 className="text-sm">Sell your course</h2>
                 </div>
               <PriceForm initialData={course} courseId={course.id} />
+              <ChaptersForm
+                            initialData={course}
+                            courseId={course.id}
+                        />
+        
         </div>
       );
 };

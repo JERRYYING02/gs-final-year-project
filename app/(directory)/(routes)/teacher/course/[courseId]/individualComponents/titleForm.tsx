@@ -62,7 +62,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
     };
 
     return (
-        <div className="w-auto mt-6 border bg-gray-100 rounded-md p-4">
+        <div className="w-auto mt-6 border bg-gray-100 p-4">
             <div className="font-medium flex items-center justify-between">
                 Course title
                 <Button onClick={toggleEdit} variant="ghost">
@@ -71,7 +71,7 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
                     ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
-                            Edit title
+                            Edit 
                         </>
                     )}
                 </Button>

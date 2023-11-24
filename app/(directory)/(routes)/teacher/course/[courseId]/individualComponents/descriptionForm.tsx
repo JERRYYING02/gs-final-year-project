@@ -66,7 +66,7 @@ export const DescriptionForm = ({
     };
 
     return (
-        <div className="w-auto mt-6 border bg-gray-100 rounded-md p-4">
+        <div className="w-auto mt-6 border bg-gray-100 p-4">
             <div className="font-medium flex items-center justify-between">
                 Course description
                 <Button onClick={toggleEdit} variant="ghost">
@@ -75,7 +75,7 @@ export const DescriptionForm = ({
                     ) : (
                         <>
                             <Pencil className="h-4 w-4 mr-2" />
-                            Edit description
+                            Edit
                         </>
                     )}
                 </Button>
