@@ -61,7 +61,7 @@ model Chapter {
   videoUrl    String? @db.Text
   position    Int
   isPublished Boolean @default(false)
-  isFree      Boolean @default(false)
+  isFreeAccess      Boolean @default(false)
   muxData MuxData?
   courseId String
   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
